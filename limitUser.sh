@@ -1,4 +1,4 @@
-echo -e "PASSWORD\nPASSWORD" | passwd USER
+echo -e "PASSWORD\nPASSWORD" | passwd USER #Reset the password in case something goes wrong while the password is changed
 B=0
 LIMIT=1 #Limit to one connection at the same time
 while true; do
