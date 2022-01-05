@@ -1,22 +1,22 @@
 echo -e "PASSWORD\nPASSWORD" | passwd USER
 B=0
+LIMIT=1 #Limit to one connection at the same time
 while true; do
 
         sleep 1
         A=$(ps -aux | grep -v 'grep' | grep -c 'USER@notty')
 
-        if [ $((A)) != "0" ]; then
+        if [ $((A)) -ge $LIMIT ]; then
 
                 if [ $B = 0 ]; then
                         echo -e "RANDOM_PASSWORD\nRANDOM_PASSWORD" | passwd USER
-                        echo "USER connected"
+                        echo "The limit of USER connections was exceeded"
                         B=1
                 fi
         fi
-        if [ $((A)) == "0" ]; then
+        if [ $((A)) -lt $LIMIT ]; then
                 if [ $B == 1 ]; then
                         echo -e "PASSWORD\nPASSWORD" | passwd USER
-                        echo "USER disconnected"
                         B=0
                 fi
         fi
