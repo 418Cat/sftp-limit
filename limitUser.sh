@@ -19,7 +19,7 @@ while true; do
 
                 if [ $B == 0 ]; then
 			echo -e "$RANDOMPASSWORD\n$RANDOMPASSWORD" | passwd "$USER"
-                        echo "La limite de $LIMIT a été atteinte"
+                        echo "The limit of $LIMIT connections at the same time was reached for $USER"
                         B=1
                 fi
         fi
